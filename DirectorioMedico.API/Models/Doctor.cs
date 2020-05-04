@@ -21,6 +21,9 @@ namespace DirectorioMedico.API.Models
         [EmailAddress]
         public string Correo { get; set; }
 
+        [Required]
+        public string Password { get; set; }
+
         public string Sitio_web { get; set; }
 
         public ICollection<RedesSociales> RedesSociales { get; set; }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Doctor } from "../../../models/Doctor";
 import { DoctoresService } from "../../services/doctores.service";
+import { ToastrAlertService } from '../../services/toastr-alert.service';
 
 @Component({
   selector: "app-listado-doctores",
@@ -10,7 +11,7 @@ import { DoctoresService } from "../../services/doctores.service";
 export class ListadoDoctoresComponent implements OnInit {
   doctores: Doctor[];
 
-  constructor(private doctoresService: DoctoresService) {}
+  constructor(private doctoresService: DoctoresService,private toastr: ToastrAlertService) {}
 
   ngOnInit() {
     this.cargarDoctores();
@@ -23,7 +24,7 @@ export class ListadoDoctoresComponent implements OnInit {
         console.log(this.doctores);
       },
       (error) => {
-        console.log(error);
+        this.toastr.error(error);
       }
     );
   }

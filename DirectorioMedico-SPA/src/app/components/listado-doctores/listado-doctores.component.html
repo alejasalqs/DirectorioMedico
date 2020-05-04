@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+<br />
 <!-- Spacer -->
 <div class="margin-top-90"></div>
 <!-- Spacer / End-->
@@ -174,8 +176,7 @@
 
               <!-- Avatar -->
               <div class="freelancer-avatar">
-                <div class="verified-badge"></div>
-                <a href="single-freelancer-profile.html"
+                <a [routerLink]="['/doctor', this.doctor.id]"
                   ><img src="{{ this.doctor.foto }}" alt=""
                 /></a>
               </div>
@@ -210,19 +211,16 @@
               <ul>
                 <li>
                   Location
-                  <strong
-                    ><i class="icon-material-outline-location-on"></i>
-                    London</strong
-                  >
+                  <strong> London</strong>
                 </li>
                 <li>Rate <strong>$60 / hr</strong></li>
                 <li>Job Success <strong>95%</strong></li>
               </ul>
             </div>
             <a
-              [routerLink]="['/doctor']"
+              [routerLink]="['/doctor', this.doctor.id]"
               class="button button-sliding-icon ripple-effect"
-              >Ver perfil <i class="icon-material-outline-arrow-right-alt"></i
+              >Ver perfil <i class="fas fa-arrow-right"></i
             ></a>
           </div>
         </div>

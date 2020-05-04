@@ -52,6 +52,10 @@ namespace DirectorioMedico.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Primer_apellido")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

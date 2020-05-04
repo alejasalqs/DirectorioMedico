@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DirectorioMedico.API.Migrations
 {
-    public partial class doctores : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,7 @@ namespace DirectorioMedico.API.Migrations
                     Primer_apellido = table.Column<string>(nullable: false),
                     Segundo_apellido = table.Column<string>(nullable: true),
                     Correo = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
                     Sitio_web = table.Column<string>(nullable: true),
                     Celular = table.Column<string>(nullable: true),
                     Telefono_oficina = table.Column<string>(nullable: true),

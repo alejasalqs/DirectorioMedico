@@ -17,16 +17,15 @@
       <div class="dashboard-nav">
         <div class="dashboard-nav-inner">
           <ul data-submenu-title="Start">
-            <li class="active">
-              <a href="dashboard.html"
-                ><i class="icon-material-outline-dashboard"></i> Dashboard</a
+            <li routerLinkActive="active">
+              <a [routerLink]="['/dashboard/home']"
+                ><i class="fas fa-tachometer-alt"></i> Dashboard</a
               >
             </li>
             <li>
               <a href="dashboard-messages.html"
-                ><i class="icon-material-outline-question-answer"></i> Messages
-                <span class="nav-tag">2</span></a
-              >
+                ><i class="fas fa-calendar-minus"></i> Agenda
+              </a>
             </li>
             <li>
               <a href="dashboard-bookmarks.html"
@@ -41,23 +40,10 @@
           </ul>
 
           <ul data-submenu-title="Organize and Manage">
-            <li>
-              <a href="#"
-                ><i class="icon-material-outline-business-center"></i> Jobs</a
+            <li routerLinkActive="active">
+              <a [routerLink]="['/dashboard/miperfil']"
+                ><i class="fas fa-user-nurse"></i> Mi información</a
               >
-              <ul>
-                <li>
-                  <a href="dashboard-manage-jobs.html"
-                    >Manage Jobs <span class="nav-tag">3</span></a
-                  >
-                </li>
-                <li>
-                  <a href="dashboard-manage-candidates.html"
-                    >Manage Candidates</a
-                  >
-                </li>
-                <li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-              </ul>
             </li>
             <li>
               <a href="#"
@@ -85,13 +71,12 @@
           <ul data-submenu-title="Account">
             <li>
               <a href="dashboard-settings.html"
-                ><i class="icon-material-outline-settings"></i> Settings</a
+                ><i class="fas fa-cogs"></i> Settings</a
               >
             </li>
             <li>
-              <a href="index-logged-out.html"
-                ><i class="icon-material-outline-power-settings-new"></i>
-                Logout</a
+              <a href="index-logged-out.html" (click)="logout()"
+                ><i class="fas fa-power-off"></i> Logout</a
               >
             </li>
           </ul>

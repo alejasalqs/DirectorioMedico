@@ -30,7 +30,7 @@ namespace DirectorioMedico.API.Controllers
         {
 
             if (await _repo.UserExits(doctor.Correo))
-                return BadRequest("El usuario ya existe");
+                return BadRequest("El correo ingresado ya se encuentra en uso");
 
 
             var createdUser = await _repo.Register(doctor);
@@ -49,7 +49,9 @@ namespace DirectorioMedico.API.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier as string, userFromRepo.Id.ToString() as string),
-                new Claim(ClaimTypes.Name as string, userFromRepo.Correo as string)
+                new Claim(ClaimTypes.Name as string, userFromRepo.Nombre + ' ' + userFromRepo.Primer_apellido as string),
+                new Claim(ClaimTypes.Email as string, userFromRepo.Correo as string),
+                new Claim(ClaimTypes.Actor as string, userFromRepo.Foto as string)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8

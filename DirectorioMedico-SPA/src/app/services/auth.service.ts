@@ -9,7 +9,7 @@ import { environment } from "../../environments/environment";
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  baseUrl = environment.apiURL + "Auth/";
+  baseUrl = environment.apiURL + "auth/";
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 

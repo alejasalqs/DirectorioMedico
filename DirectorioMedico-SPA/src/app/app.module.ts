@@ -2,6 +2,9 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/shared/navbar/navbar.component";
@@ -12,6 +15,16 @@ import { PerfilDoctorComponent } from "./components/perfil-doctor/perfil-doctor.
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { WebviewComponent } from "./components/webview/webview.component";
 import { AgendaComponent } from "./components/agenda/agenda.component";
+import { LoginComponent } from "./components/shared/login/login.component";
+import { DashboardfooterComponent } from "./components/shared/dashboardfooter/dashboardfooter.component";
+import { JwtModule } from "@auth0/angular-jwt";
+import { MiPerfilComponent } from "./components/dash/mi-perfil/mi-perfil.component";
+import { HomeComponent } from "./components/dash/home/home.component";
+import { ErrorInterceptorProvider } from "./services/error.interceptor";
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -24,9 +37,28 @@ import { AgendaComponent } from "./components/agenda/agenda.component";
     DashboardComponent,
     WebviewComponent,
     AgendaComponent,
+    LoginComponent,
+    DashboardfooterComponent,
+    MiPerfilComponent,
+    HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:5000"],
+        blacklistedRoutes: ["localhost:5000/auth"],
+      },
+    }),
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+  ],
+  providers: [ErrorInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

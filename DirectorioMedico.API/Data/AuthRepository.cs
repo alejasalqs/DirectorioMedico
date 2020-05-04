@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using DirectorioMedico.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DirectorioMedico.API.Data
 {
@@ -14,16 +15,16 @@ namespace DirectorioMedico.API.Data
         }
         public async Task<Doctor> Login(string correo, string password)
         {
-            /* var user = await _context.Doctores
-             .FirstOrDefaultAsync(x => x.UserName == username);
+            var user = await _context.Doctores
+             .FirstOrDefaultAsync(x => x.Correo == correo);
 
-             if (user == null)
-                 return null;
+            if (user == null)
+                return null;
 
-             if (user.password != password)
-                 return null;*/
+            if (user.Password != password)
+                return null;
 
-            return null;
+            return user;
         }
 
         public async Task<Doctor> Register(Doctor doctor)
@@ -38,8 +39,8 @@ namespace DirectorioMedico.API.Data
 
         public async Task<bool> UserExits(string username)
         {
-            //if (await _context.Doctores.AnyAsync(x => x.UserName == username))
-            //return true;
+            if (await _context.Doctores.AnyAsync(x => x.Correo == username))
+            return true;
 
             return false;
         }
