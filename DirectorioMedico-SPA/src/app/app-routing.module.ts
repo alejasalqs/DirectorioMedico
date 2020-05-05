@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: "dashboard",
+    component: DashboardComponent,
     runGuardsAndResolvers: "always",
     canActivate: [AuthGuard],
     children: DASHBOARD_ROUTES,

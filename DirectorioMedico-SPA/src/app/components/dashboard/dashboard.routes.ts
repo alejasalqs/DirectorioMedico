@@ -1,11 +1,16 @@
 import { Routes } from "@angular/router";
-import { DashboardComponent } from "./dashboard.component";
 import { MiPerfilComponent } from "../dash/mi-perfil/mi-perfil.component";
+import { HomeComponent } from "../dash/home/home.component";
 
 export const DASHBOARD_ROUTES: Routes = [
   {
+    path: "",
+    pathMatch: "prefix",
+    redirectTo: "home",
+  },
+  {
     path: "home",
-    component: DashboardComponent,
+    component: HomeComponent,
   },
   {
     path: "miperfil",
@@ -14,6 +19,6 @@ export const DASHBOARD_ROUTES: Routes = [
   {
     path: "**",
     redirectTo: "home",
-    pathMatch: "full",
+    pathMatch: "full",    
   },
 ];

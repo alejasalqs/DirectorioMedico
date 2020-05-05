@@ -1,6 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
+/*
+
+Creado por asalguero
+Fecha: 20/04/2020
+
+*/
+
 namespace DirectorioMedico.API.Models
 {
     public class Experiencia
@@ -18,6 +25,8 @@ namespace DirectorioMedico.API.Models
 
         [Required]
         public DateTime fecha_final { get; set; }
+
+        public string Labores { get; set; }
 
         [Required]
         public bool estado { get; set; }

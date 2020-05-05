@@ -11,7 +11,7 @@
           <a [routerLink]="['/index']"
             ><img
               src="../../../../assets/img/logo-grupo-argus-productos.png"
-              alt=""
+              alt="Logo de la empresa"
           /></a>
         </div>
 
@@ -47,7 +47,7 @@
           <!-- Messages -->
           <div class="header-notifications user-menu">
             <div class="header-notifications-trigger">
-              <a href="#"
+              <a
                 ><div class="user-avatar status-online">
                   <img src="{{ this.auth.decodedToken.actort }}" alt="" /></div
               ></a>
@@ -77,16 +77,14 @@
               </div>
 
               <ul class="user-menu-small-nav">
-                <li>
+                <li [routerLink]="['/dashboard']">
                   <a><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li>
                   <a><i class="fas fa-cogs"></i> Settings</a>
                 </li>
-                <li>
-                  <a (click)="logout()"
-                    ><i class="fas fa-power-off"></i> Logout</a
-                  >
+                <li (click)="logout()">
+                  <a><i class="fas fa-power-off"></i> Logout</a>
                 </li>
               </ul>
             </div>

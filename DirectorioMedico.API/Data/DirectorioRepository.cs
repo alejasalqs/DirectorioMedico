@@ -3,6 +3,13 @@ using System.Threading.Tasks;
 using DirectorioMedico.API.Models;
 using Microsoft.EntityFrameworkCore;
 
+/*
+
+Creado por asalguero
+Fecha: 01/05/2020
+
+*/
+
 namespace DirectorioMedico.API.Data
 {
     public class DirectorioRepository : IDirectorioRepository

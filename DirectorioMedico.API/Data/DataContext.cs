@@ -1,6 +1,13 @@
 using DirectorioMedico.API.Models;
 using Microsoft.EntityFrameworkCore;
 
+/*
+
+Creado por asalguero
+Fecha: 20/04/2020
+
+*/
+
 namespace DirectorioMedico.API.Data
 {
     public class DataContext : DbContext
@@ -9,5 +16,15 @@ namespace DirectorioMedico.API.Data
 
         // Representa el nombre de la tabla
         public DbSet<Doctor> Doctores { get; set; }
+
+        public DbSet<Especialidades> Especialidades { get; set; }
+
+        public DbSet<Estudios> Estudios { get; set; }
+
+        public DbSet<Experiencia> Experiencia { get; set; }
+
+        public DbSet<RedesSociales> RedesSociales { get; set; }
+
+        public DbSet<Idioma> Idiomas { get; set; }
     }
 }

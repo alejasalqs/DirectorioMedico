@@ -1,21 +1,23 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using DirectorioMedico.API.Models;
 
 /*
 
 Creado por asalguero
-Fecha: 20/04/2020
+Fecha: 05/05/2020
+
+Uso: Especifica un contenedor de datos con la información de los doctores en el momento en que
+se va a modificar la información de un registro.
+
 
 */
 
-namespace DirectorioMedico.API.Models
+namespace DirectorioMedico.API.Dtos
 {
-    public class Doctor
+    public class DoctorUpdateDto
     {
-        [Required]
-        public int Id { get; set; }
-
         [Required(ErrorMessage = "Es necesario llenar el campo Nombre")]
         public string Nombre { get; set; }
 
@@ -51,10 +53,6 @@ namespace DirectorioMedico.API.Models
         [Required]
         public bool Estado { get; set; }
 
-        [Required]
-        public DateTime FechaCreacion { get; set; }
-
-        public DateTime FechaUltimaActividad { get; set; }
 
         [Required(ErrorMessage = "Es necesario llenar el campo fecha de nacimiento")]
         public DateTime FechaNacimiento { get; set; }
@@ -67,7 +65,7 @@ namespace DirectorioMedico.API.Models
         [Required(ErrorMessage = "Es necesario llenar el campo Precio por Hora")]
         public string Precio { get; set; }
 
-        public ICollection<Idioma> Idiomas { get; set; }
+        public ICollection<Idioma> Idioma { get; set; }
 
         public int Genero { get; set; }
     }

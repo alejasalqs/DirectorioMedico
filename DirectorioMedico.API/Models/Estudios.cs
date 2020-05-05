@@ -1,6 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
+/*
+
+Creado por asalguero
+Fecha: 20/04/2020
+
+*/
+
 namespace DirectorioMedico.API.Models
 {
     public class Estudios
@@ -20,7 +27,9 @@ namespace DirectorioMedico.API.Models
         public DateTime fecha_final { get; set; }
 
         [Required]
-        public bool estado { get; set; } 
+        public bool estado { get; set; }
+
+        public string Descripcion { get; set; }
 
         public Doctor Doctor { get; set; }
 

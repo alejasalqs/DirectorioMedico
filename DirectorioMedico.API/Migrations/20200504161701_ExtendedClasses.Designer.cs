@@ -4,14 +4,16 @@ using DirectorioMedico.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DirectorioMedico.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200504161701_ExtendedClasses")]
+    partial class ExtendedClasses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,9 +49,6 @@ namespace DirectorioMedico.API.Migrations
 
                     b.Property<string>("Foto")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Genero")
-                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -183,30 +182,6 @@ namespace DirectorioMedico.API.Migrations
                     b.ToTable("Experiencia");
                 });
 
-            modelBuilder.Entity("DirectorioMedico.API.Models.Idioma", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DoctorID")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("estado")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorID");
-
-                    b.ToTable("Idioma");
-                });
-
             modelBuilder.Entity("DirectorioMedico.API.Models.RedesSociales", b =>
                 {
                     b.Property<int>("Id")
@@ -253,15 +228,6 @@ namespace DirectorioMedico.API.Migrations
                 {
                     b.HasOne("DirectorioMedico.API.Models.Doctor", "Doctor")
                         .WithMany("Experiencia")
-                        .HasForeignKey("DoctorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DirectorioMedico.API.Models.Idioma", b =>
-                {
-                    b.HasOne("DirectorioMedico.API.Models.Doctor", "Doctor")
-                        .WithMany("Idiomas")
                         .HasForeignKey("DoctorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

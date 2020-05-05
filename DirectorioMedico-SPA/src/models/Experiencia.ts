@@ -4,6 +4,7 @@ export interface Experiencia {
   lugar_trabajo: string;
   fecha_inicial: Date;
   fecha_final: Date;
+  labores: string;
   estado: boolean;
   doctorID: number;
 }

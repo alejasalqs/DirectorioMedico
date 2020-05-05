@@ -10,6 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
+/*
+
+Creado por asalguero
+Fecha: 20/04/2020
+
+*/
+
 namespace DirectorioMedico.API.Controllers
 {
     [ApiController]

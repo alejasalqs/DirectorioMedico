@@ -2,6 +2,16 @@ using System;
 using System.Collections.Generic;
 using DirectorioMedico.API.Models;
 
+/*
+
+Creado por asalguero
+Fecha: 02/05/2020
+
+Uso: Especifica un contenedor de datos con el detalle de los doctores en el momento en que
+se consulta un registro individual.
+
+*/
+
 namespace DirectorioMedico.API.Dtos
 {
     public class DoctorDetail
@@ -18,7 +28,7 @@ namespace DirectorioMedico.API.Dtos
 
         public string Sitio_web { get; set; }
 
-        public ICollection<RedesSociales> RedesSociales { get; set; }
+        public ICollection<RedesSocialesDetailDto> RedesSociales { get; set; }
 
         public string Celular { get; set; }
 

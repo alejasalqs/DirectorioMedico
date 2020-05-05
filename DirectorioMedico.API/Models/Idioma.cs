@@ -3,21 +3,20 @@ using System.ComponentModel.DataAnnotations;
 /*
 
 Creado por asalguero
-Fecha: 20/04/2020
+Fecha: 05/05/2020
 
 */
 
 namespace DirectorioMedico.API.Models
 {
-    public class Especialidades
+    public class Idioma
     {
-        public int id { get; set; }
-
-        [Required]
-        public string descripcion { get; set; }
-
+        public int Id { get; set; }
         [Required]
         public bool estado { get; set; }
+
+        [Required]
+        public string Descripcion { get; set; }
 
         public Doctor Doctor { get; set; }
 

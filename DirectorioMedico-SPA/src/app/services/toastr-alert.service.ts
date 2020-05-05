@@ -1,6 +1,19 @@
 import { Injectable } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { trigger, state, style, transition, animate } from '@angular/animations'; 
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from "@angular/animations";
+
+/*
+
+Creado por: asalguero
+Fecha: 27/04/2020
+
+*/
 
 @Injectable({
   providedIn: "root",
@@ -8,22 +21,46 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class ToastrAlertService {
   constructor(private toastr: ToastrService) {}
 
-  success(message: string) {
-    return this.toastr.success(message, "Operación ejecutada exitosamente");
+  /**
+   * Utilizando Toastr muestra una alerta de éxito al usuario
+   * @param mensaje Texto que se desea mostrar en el cuerpo de la alerta.
+   * @param titulo Titulo de la alerta. Opcional
+   * @returns Elemento UI
+   */
+  success(mensaje: string, titulo: string = "Operación realizada con éxito") {
+    return this.toastr.success(mensaje, titulo);
   }
 
-  error(message: string) {
-    return this.toastr.error(
-      message,
-      "Problemas en el momento de realizar la acción"
-    );
+  /**
+   * Utilizando Toastr muestra una alerta de error al usuario
+   * @param mensaje Texto que se desea mostrar en el cuerpo de la alerta.
+   * @param titulo Titulo de la alerta. Opcional
+   * @returns Elemento UI
+   */
+  error(
+    mensaje: string,
+    titulo: string = "Problemas en el momento de realizar la acción"
+  ) {
+    return this.toastr.error(mensaje, titulo);
   }
 
-  info(message: string, tittle: string) {
-    return this.toastr.info(message, tittle);
+  /**
+   * Utilizando Toastr muestra una alerta de información al usuario
+   * @param mensaje Texto que se desea mostrar en el cuerpo de la alerta.
+   * @param titulo Titulo de la alerta. Opcional
+   * @returns Elemento UI
+   */
+  info(mensaje: string, titulo: string = "Información del sistema") {
+    return this.toastr.info(mensaje, titulo);
   }
 
-  warning(message: string, tittle: string) {
-    return this.toastr.warning(message, tittle);
+  /**
+   * Utilizando Toastr muestra una alerta de warning al usuario
+   * @param mensaje Texto que se desea mostrar en el cuerpo de la alerta.
+   * @param titulo Titulo de la alerta. Opcional
+   * @returns Elemento UI
+   */
+  warning(mensaje: string, titulo: string = "Alerta:") {
+    return this.toastr.warning(mensaje, titulo);
   }
 }

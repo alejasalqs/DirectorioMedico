@@ -1,21 +1,29 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using DirectorioMedico.API.Data;
 using DirectorioMedico.API.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
+/*
+
+Creado por asalguero
+Fecha: 20/04/2020
+
+*/
 
 namespace DirectorioMedico.API.Controllers
 {
-    //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class DoctoresController : ControllerBase
     {
 
         private readonly IDirectorioRepository _repo;
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper; // Clase de AutoMapper para transformar información
 
         public DoctoresController(IDirectorioRepository repo, IMapper mapper)
         {
@@ -31,9 +39,9 @@ namespace DirectorioMedico.API.Controllers
             {
                 var doctores = await _repo.ObtenerDoctores();
 
-               // var doctoresToReturn = _mapper.Map<IEnumerable<DoctorListDto>>(doctores);
+                var doctoresToReturn = _mapper.Map<IEnumerable<DoctorListDto>>(doctores);
 
-                return Ok(doctores);
+                return Ok(doctoresToReturn);
             }
             catch (Exception ex)
             {
@@ -47,43 +55,45 @@ namespace DirectorioMedico.API.Controllers
         {
             var value = await _repo.ObtenerDoctor(id);
 
-            //var valueToReturn = _mapper.Map<DoctorDetail>(value);
+            var valueToReturn = _mapper.Map<DoctorDetail>(value);
 
-            return Ok(value);
+            return Ok(valueToReturn);
         }
 
         /* [HttpPost]
-         public async Task<IActionResult> AgregarDoctor([FromBody] Doctor doctor)
-         {
-             try
-             {
-                 _context.Doctores.Add(doctor);
-                 _context.SaveChanges();
-                 return Ok();
-             }
-             catch (System.Exception)
-             {
-                 return BadRequest();
-             }
-         }
+          public async Task<IActionResult> AgregarDoctor([FromBody] Doctor doctor)
+          {
+              try
+              {
+                  _context.Doctores.Add(doctor);
+                  _context.SaveChanges();
+                  return Ok();
+              }
+              catch (System.Exception)
+              {
+                  return BadRequest();
+              }
+          }*/
 
-         [HttpPut("{id}")]
-         public async Task<IActionResult> ModificarDoctor(int id, [FromBody] Doctor doctor)
-         {
-             if (doctor.Id == id)
-             {
-                 _context.Entry(doctor).State = EntityState.Modified;
-                 _context.SaveChanges();
-                 return Ok();
-             }
-             else
-             {
-                 return BadRequest();
-             }
-         }
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ModificarPerfilDoctor(int id, DoctorUpdateDto doctorUpdateDto)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var userFromDB = await _repo.ObtenerDoctor(id);
+
+            _mapper.Map(doctorUpdateDto, userFromDB);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception("No se pudo actualizar la información del usuario");
+        }
 
 
-         [HttpDelete("{id}")]
+        /* [HttpDelete("{id}")]
          public void EliminarDoctor(int id, [FromBody] Doctor doctor)
          {
              if (doctor.Id == id)
