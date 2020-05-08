@@ -25,6 +25,6 @@ namespace DirectorioMedico.API.Data
 
         public DbSet<RedesSociales> RedesSociales { get; set; }
 
-        public DbSet<Idioma> Idiomas { get; set; }
+        public DbSet<Idioma> Idioma { get; set; }
     }
 }

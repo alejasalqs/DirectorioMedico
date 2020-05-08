@@ -16,23 +16,11 @@ export class PerfilDoctorComponent implements OnInit {
     private doctoresService: DoctoresService,
     private router: ActivatedRoute,
     private toastr: ToastrAlertService
-  ) {
-    this.router.params.subscribe((params) => {
-      this.CargarInformacion(params["id"]);
+  ) {}
+
+  ngOnInit() {
+    this.router.data.subscribe((data) => {
+      this.doctor = data["doctor"];
     });
-  }
-
-  ngOnInit() {}
-
-  CargarInformacion(id: any) {
-    this.doctoresService.obtenerDoctoresID(id).subscribe(
-      (doctor: Doctor) => {
-        this.doctor = doctor;
-        console.log(this.doctor);
-      },
-      (error) => {
-        this.toastr.error(error);
-      }
-    );
   }
 }

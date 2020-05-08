@@ -25,7 +25,7 @@ namespace DirectorioMedico.API.Models
         public string Segundo_apellido { get; set; }
 
         [Required(ErrorMessage = "Es necesario llenar el campo Correo")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "El campo Correo no es una dirección de correo electrónico válida")]
         public string Correo { get; set; }
 
         [Required(ErrorMessage = "Es necesario llenar el campo Contraseña")]
@@ -39,13 +39,10 @@ namespace DirectorioMedico.API.Models
 
         public string Telefono_oficina { get; set; }
 
-        [Required(ErrorMessage = "Es necesario añadir especialidades")]
         public ICollection<Especialidades> Especialidades { get; set; }
 
-        [Required(ErrorMessage = "Es necesario añadir estudios")]
         public ICollection<Estudios> Estudios { get; set; }
 
-        [Required(ErrorMessage = "Es necesario añadir experiencia")]
         public ICollection<Experiencia> Experiencia { get; set; }
 
         [Required]
@@ -61,7 +58,6 @@ namespace DirectorioMedico.API.Models
 
         public string Foto { get; set; }
 
-        [Required(ErrorMessage = "Es necesario llenar el campo Sobre mi")]
         public string SobreMi { get; set; }
 
         [Required(ErrorMessage = "Es necesario llenar el campo Precio por Hora")]

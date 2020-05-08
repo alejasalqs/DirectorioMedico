@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using DirectorioMedico.API.Helpers;
 using DirectorioMedico.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,16 +45,22 @@ namespace DirectorioMedico.API.Data
             return doctor;
         }
 
-        public async Task<IEnumerable<Doctor>> ObtenerDoctores()
+        public async Task<PagedList<Doctor>> ObtenerDoctores(UserParams userParams)
         {
-            var doctores = await _context.Doctores
+            var doctores = _context.Doctores
             .Include(r => r.RedesSociales)
             .Include(es => es.Especialidades)
             .Include(es => es.Estudios)
-            .Include(ex => ex.Experiencia)
-            .ToListAsync();
+            .Include(ex => ex.Experiencia).AsQueryable();
 
-            return doctores;
+            if (userParams.Genero != 0)
+            {
+                doctores = doctores.Where(doc => doc.Genero == userParams.Genero);
+            }
+
+            //doctores = doctores.Where(doc => doc.Especialidades[0].descripcion = userParams.Especialidad);
+
+            return await PagedList<Doctor>.CreateAsync(doctores, userParams.numeroPagina, userParams.TamanoPagina);
         }
 
         public async Task<bool> SaveAll()

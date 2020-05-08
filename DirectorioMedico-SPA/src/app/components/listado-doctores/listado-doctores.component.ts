@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Doctor } from "../../../models/Doctor";
 import { DoctoresService } from "../../services/doctores.service";
-import { ToastrAlertService } from '../../services/toastr-alert.service';
+import { ToastrAlertService } from "../../services/toastr-alert.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-listado-doctores",
@@ -11,21 +12,19 @@ import { ToastrAlertService } from '../../services/toastr-alert.service';
 export class ListadoDoctoresComponent implements OnInit {
   doctores: Doctor[];
 
-  constructor(private doctoresService: DoctoresService,private toastr: ToastrAlertService) {}
+  constructor(
+    private doctoresService: DoctoresService,
+    private toastr: ToastrAlertService,
+    private route: ActivatedRoute
+  ) {}
+
+  numeroPagina = 1;
+  tamanoPagina = 5;
 
   ngOnInit() {
-    this.cargarDoctores();
-  }
-
-  cargarDoctores() {
-    this.doctoresService.obtenerDoctores().subscribe(
-      (doctores: Doctor[]) => {
-        this.doctores = doctores;
-        console.log(this.doctores);
-      },
-      (error) => {
-        this.toastr.error(error);
-      }
-    );
+    this.route.data.subscribe((data) => {
+      this.doctores = data["doctores"];
+      console.log(this.doctores);
+    });
   }
 }

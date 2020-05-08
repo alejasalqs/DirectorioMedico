@@ -25,11 +25,10 @@ namespace DirectorioMedico.API.Dtos
 
         public string Sitio_web { get; set; }
 
-        //public ICollection<RedesSociales> RedesSociales { get; set; }
+        public bool Estado { get; set; }
 
+        public string Precio { get; set; }
         public string Celular { get; set; }
-
-        public string Telefono_oficina { get; set; }
 
         public string Foto { get; set; }
     }

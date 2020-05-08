@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DirectorioMedico.API.Helpers;
 using DirectorioMedico.API.Models;
 
 /*
@@ -19,7 +20,7 @@ namespace DirectorioMedico.API.Data
 
         Task<bool> SaveAll();
 
-        Task<IEnumerable<Doctor>> ObtenerDoctores();
+        Task<PagedList<Doctor>> ObtenerDoctores(UserParams userParams);
 
         Task<Doctor> ObtenerDoctor(int id);
     }

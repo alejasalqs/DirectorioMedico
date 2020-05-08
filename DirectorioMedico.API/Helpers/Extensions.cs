@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 /*
 
@@ -18,6 +20,15 @@ namespace DirectorioMedico.API.Helpers
             response.Headers.Add("Application-Error", message);
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");
+        }
+
+        public static void AddPagination(this HttpResponse response, int paginaActual, int itemsPorPagina, int itemsTotal, int paginasTotal)
+        {
+            var paginationHeader = new PaginationHeader(paginaActual, itemsPorPagina, itemsTotal, paginasTotal);
+            var camelCase = new JsonSerializerSettings();
+            camelCase.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationHeader, camelCase));
+            response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
         }
     }
 }

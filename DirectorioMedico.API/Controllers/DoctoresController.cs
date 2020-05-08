@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DirectorioMedico.API.Data;
 using DirectorioMedico.API.Dtos;
+using DirectorioMedico.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,15 +34,22 @@ namespace DirectorioMedico.API.Controllers
 
         // GET
         [HttpGet]
-        public async Task<IActionResult> GetDoctores()
+        public async Task<IActionResult> GetDoctores([FromQuery] UserParams userParams)
         {
             try
             {
-                var doctores = await _repo.ObtenerDoctores();
+                /*if(string.IsNullOrEmpty(userParams.Especialidad))
+                {
+                    userParams.Especialidad = userFromRepo.Especialidades[0].descripcion;
+                } */
 
-                var doctoresToReturn = _mapper.Map<IEnumerable<DoctorListDto>>(doctores);
+                var doctores = await _repo.ObtenerDoctores(userParams);
 
-                return Ok(doctoresToReturn);
+                //var doctoresToReturn = _mapper.Map<IEnumerable<DoctorListDto>>(doctores);
+
+                Response.AddPagination(doctores.PaginaActual, doctores.TamanoPagina, doctores.CuentaTotal, doctores.PaginasTotales);
+
+                return Ok(doctores);
             }
             catch (Exception ex)
             {
@@ -55,9 +63,9 @@ namespace DirectorioMedico.API.Controllers
         {
             var value = await _repo.ObtenerDoctor(id);
 
-            var valueToReturn = _mapper.Map<DoctorDetail>(value);
+            //var valueToReturn = _mapper.Map<DoctorDetail>(value);
 
-            return Ok(valueToReturn);
+            return Ok(value);
         }
 
         /* [HttpPost]

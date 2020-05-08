@@ -7,6 +7,8 @@ import { PerfilDoctorComponent } from "./components/perfil-doctor/perfil-doctor.
 import { LoginComponent } from "./components/shared/login/login.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { DASHBOARD_ROUTES } from "./components/dashboard/dashboard.routes";
+import { DoctoresDetalleResolver } from "./Resolvers/doctor-detalle.resolver";
+import { DoctorListaResolver } from "./Resolvers/doctor-lista.resolver";
 
 const routes: Routes = [
   {
@@ -23,10 +25,12 @@ const routes: Routes = [
   {
     path: "doctores",
     component: ListadoDoctoresComponent,
+    resolve: { doctores: DoctorListaResolver },
   },
   {
     path: "doctor/:id",
     component: PerfilDoctorComponent,
+    resolve: { doctor: DoctoresDetalleResolver },
   },
   {
     path: "login",

@@ -21,6 +21,8 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { MiPerfilComponent } from "./components/dash/mi-perfil/mi-perfil.component";
 import { HomeComponent } from "./components/dash/home/home.component";
 import { ErrorInterceptorProvider } from "./services/error.interceptor";
+import { DoctoresDetalleResolver } from "./Resolvers/doctor-detalle.resolver";
+import { DoctorListaResolver } from "./Resolvers/doctor-lista.resolver";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -58,7 +60,11 @@ export function tokenGetter() {
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [ErrorInterceptorProvider],
+  providers: [
+    ErrorInterceptorProvider,
+    DoctoresDetalleResolver,
+    DoctorListaResolver,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
