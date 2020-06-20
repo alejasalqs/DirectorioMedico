@@ -23,7 +23,7 @@ const routes: Routes = [
     children: DASHBOARD_ROUTES,
   },
   {
-    path: "doctores",
+    path: "doctores/:termino",
     component: ListadoDoctoresComponent,
     resolve: { doctores: DoctorListaResolver },
   },

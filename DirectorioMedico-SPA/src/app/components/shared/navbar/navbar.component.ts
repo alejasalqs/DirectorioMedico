@@ -3,6 +3,8 @@ import { AuthService } from "../../../services/auth.service";
 import { ToastrAlertService } from 'src/app/services/toastr-alert.service';
 import { Router } from '@angular/router';
 
+declare function init_plugins();
+
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -11,7 +13,9 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   constructor(public auth: AuthService,private toastr: ToastrAlertService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    init_plugins();
+  }
 
   logout() {
     localStorage.removeItem("token");

@@ -52,7 +52,8 @@
                 >What job you want?</label
               >
               <input
-                id="intro-keywords"
+                id="busqueda"
+                #termino
                 type="text"
                 placeholder="Job Title or Keywords"
               />
@@ -60,7 +61,10 @@
 
             <!-- Button -->
             <div class="intro-search-button">
-              <button class="button ripple-effect" [routerLink]="['/doctores']">
+              <button
+                class="button ripple-effect"
+                (click)="buscar(termino.value)"
+              >
                 Search
               </button>
             </div>

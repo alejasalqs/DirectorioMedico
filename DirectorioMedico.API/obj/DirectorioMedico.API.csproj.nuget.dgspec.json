@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Xtreme Pc\\Desktop\\Angular\\DirectorioMedico\\DirectorioMedico.API\\DirectorioMedico.API.csproj": {}
+    "C:\\Users\\Xtreme Pc\\Desktop\\Nueva carpeta\\DirectorioMedico.API\\DirectorioMedico.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Xtreme Pc\\Desktop\\Angular\\DirectorioMedico\\DirectorioMedico.API\\DirectorioMedico.API.csproj": {
+    "C:\\Users\\Xtreme Pc\\Desktop\\Nueva carpeta\\DirectorioMedico.API\\DirectorioMedico.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Xtreme Pc\\Desktop\\Angular\\DirectorioMedico\\DirectorioMedico.API\\DirectorioMedico.API.csproj",
+        "projectUniqueName": "C:\\Users\\Xtreme Pc\\Desktop\\Nueva carpeta\\DirectorioMedico.API\\DirectorioMedico.API.csproj",
         "projectName": "DirectorioMedico.API",
-        "projectPath": "C:\\Users\\Xtreme Pc\\Desktop\\Angular\\DirectorioMedico\\DirectorioMedico.API\\DirectorioMedico.API.csproj",
+        "projectPath": "C:\\Users\\Xtreme Pc\\Desktop\\Nueva carpeta\\DirectorioMedico.API\\DirectorioMedico.API.csproj",
         "packagesPath": "C:\\Users\\Xtreme Pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Xtreme Pc\\Desktop\\Angular\\DirectorioMedico\\DirectorioMedico.API\\obj\\",
+        "outputPath": "C:\\Users\\Xtreme Pc\\Desktop\\Nueva carpeta\\DirectorioMedico.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\ProgramData\\Xamarin\\NuGet\\",
@@ -94,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

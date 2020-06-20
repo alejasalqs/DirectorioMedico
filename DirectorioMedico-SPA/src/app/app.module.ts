@@ -5,6 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
+import { FullCalendarModule } from "@fullcalendar/angular"; // for FullCalendar!
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/shared/navbar/navbar.component";
@@ -23,6 +24,8 @@ import { HomeComponent } from "./components/dash/home/home.component";
 import { ErrorInterceptorProvider } from "./services/error.interceptor";
 import { DoctoresDetalleResolver } from "./Resolvers/doctor-detalle.resolver";
 import { DoctorListaResolver } from "./Resolvers/doctor-lista.resolver";
+import { CalendarioComponent } from "./components/calendario/calendario.component";
+import { PaginationModule } from "ngx-bootstrap/pagination";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -43,6 +46,7 @@ export function tokenGetter() {
     DashboardfooterComponent,
     MiPerfilComponent,
     HomeComponent,
+    CalendarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,7 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    PaginationModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -59,6 +64,8 @@ export function tokenGetter() {
     }),
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    FullCalendarModule,
+    PaginationModule.forRoot(), // for FullCalendar!
   ],
   providers: [
     ErrorInterceptorProvider,

@@ -8,6 +8,8 @@ import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class DoctorListaResolver implements Resolve<Doctor[]> {
+  numeroPagina = 1;
+  tamanoPagina = 10;
   constructor(
     private doctoresService: DoctoresService,
     private router: Router,
@@ -15,12 +17,14 @@ export class DoctorListaResolver implements Resolve<Doctor[]> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Doctor[]> {
-    return this.doctoresService.obtenerDoctores().pipe(
-      catchError((error) => {
-        this.toastr.error(error, "Problemas obteniendo la información");
-        this.router.navigate(["/index"]);
-        return of(null);
-      })
-    );
+    return this.doctoresService
+      .obtenerDoctores(this.numeroPagina, this.tamanoPagina)
+      .pipe(
+        catchError((error) => {
+          this.toastr.error(error, "Problemas obteniendo la información");
+          this.router.navigate(["/index"]);
+          return of(null);
+        })
+      );
   }
 }
