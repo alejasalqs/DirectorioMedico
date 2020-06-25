@@ -44,7 +44,7 @@ namespace DirectorioMedico.API.Controllers
                 } */
 
                 var doctores = await _repo.ObtenerDoctores(userParams);
-
+ 
                 //var doctoresToReturn = _mapper.Map<IEnumerable<DoctorListDto>>(doctores);
 
                 Response.AddPagination(doctores.PaginaActual, doctores.TamanoPagina, doctores.CuentaTotal, doctores.PaginasTotales);

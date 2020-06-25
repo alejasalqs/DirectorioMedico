@@ -66,5 +66,11 @@ namespace DirectorioMedico.API.Models
         public ICollection<Idioma> Idiomas { get; set; }
 
         public int Genero { get; set; }
+
+        public string Locacion { get; set; }     
+
+        public int IdAgenda { get; set; }
+
+        public Agenda Agenda { get; set; }
     }
 }

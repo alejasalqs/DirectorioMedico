@@ -26,7 +26,8 @@ export class DoctoresService {
    */
   obtenerDoctores(
     page?,
-    itemsPorPagina?
+    itemsPorPagina?,
+    genero?
   ): Observable<PaginatedResult<Doctor[]>> {
     const paginatedResult: PaginatedResult<Doctor[]> = new PaginatedResult<
       Doctor[]
@@ -37,6 +38,10 @@ export class DoctoresService {
     if (page != null && itemsPorPagina != null) {
       params = params.append("numeroPagina", page);
       params = params.append("tamanoPagina", itemsPorPagina);
+    }
+
+    if (genero != null) {
+      params = params.append("genero", genero);
     }
 
     return this.http
